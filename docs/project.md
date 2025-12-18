@@ -2,6 +2,12 @@
 
 This project is a static site that presents users with various options for generating QR codes.
 
+## Building
+
+* Ensure the correct version of node is selected (`nvm use`)
+* Check types: `yarn typecheck`
+* Build: `yarn build`
+
 ## Goals
 
 * Users do not need to create accounts in order to generate QR codes
@@ -46,3 +52,7 @@ The QR preview frame should render a QR code. A "generate" button will trigger Q
 #### Download
 
 Under the preview there should be buttons to download the QR code. The user should be able to select between png and svg. The output size should be 1000x1000 px.
+
+## ShadCN
+
+Add components use `yarn shadcn add <component>` (e.g. `yarn shadcn add button`).
