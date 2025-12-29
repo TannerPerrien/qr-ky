@@ -98,7 +98,6 @@ export function QRDownload({
           fgColor={fgColor}
           bgColor={finalBgColor}
           level="M"
-          includeMargin={true}
         />
       </div>
 
