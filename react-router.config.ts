@@ -1,13 +1,9 @@
 import type { Config } from "@react-router/dev/config";
 
 export default {
-  // Config options...
-  // Server-side render by default, to enable SPA mode set this to `false`
+  // SPA mode for GitHub Pages
   ssr: false,
-  // Pre-render the home route at build time
-  // NOTE: Temporarily disabled due to hydration error with GitHub Pages base path
-  // The prerendered HTML has basename:"/" but client expects basename:"/qr-ky"
-  // async prerender() {
-  //   return ["/"];
-  // },
+  // Tell the router it's running at /qr-ky/ (only in production)
+  basename: process.env.NODE_ENV === "production" ? "/qr-ky" : undefined,
+  // Note: Prerendering disabled because it creates nested directories with basename
 } satisfies Config;
