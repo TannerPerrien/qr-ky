@@ -41,18 +41,21 @@ export default function Home() {
   const [bgColor, setBgColor] = useState<string>('#ffffff');
   const [bgTransparent, setBgTransparent] = useState<boolean>(false);
 
+  // Compute WiFi URI for display
+  const wifiURI = formatWiFiURI({
+    ssid: wifiSSID,
+    password: wifiPassword,
+    type: wifiType,
+    hidden: wifiHidden,
+  });
+
   // Auto-generate QR value in real-time
   const qrValue = (() => {
     switch (qrType) {
       case 'url':
         return urlValue;
       case 'wifi':
-        return formatWiFiURI({
-          ssid: wifiSSID,
-          password: wifiPassword,
-          type: wifiType,
-          hidden: wifiHidden,
-        });
+        return wifiURI;
       case 'raw':
         return rawValue;
       default:
@@ -107,6 +110,7 @@ export default function Home() {
                     password={wifiPassword}
                     securityType={wifiType}
                     hidden={wifiHidden}
+                    wifiURI={wifiURI}
                     onSSIDChange={setWifiSSID}
                     onPasswordChange={setWifiPassword}
                     onSecurityTypeChange={setWifiType}

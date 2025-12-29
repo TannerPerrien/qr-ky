@@ -1,12 +1,16 @@
+import { useState } from 'react';
 import { Input } from '~/components/ui/input';
 import { Label } from '~/components/ui/label';
 import { Checkbox } from '~/components/ui/checkbox';
+import { Button } from '~/components/ui/button';
+import { Copy, Check } from 'lucide-react';
 
 interface WiFiFormProps {
   ssid: string;
   password: string;
   securityType: 'WPA' | 'open';
   hidden: boolean;
+  wifiURI: string;
   onSSIDChange: (value: string) => void;
   onPasswordChange: (value: string) => void;
   onSecurityTypeChange: (value: 'WPA' | 'open') => void;
@@ -18,11 +22,24 @@ export function WiFiForm({
   password,
   securityType,
   hidden,
+  wifiURI,
   onSSIDChange,
   onPasswordChange,
   onSecurityTypeChange,
   onHiddenChange,
 }: WiFiFormProps) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(wifiURI);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  };
+
   return (
     <div className="space-y-4">
       <div className="space-y-2">
@@ -71,6 +88,28 @@ export function WiFiForm({
         <Label htmlFor="wifi-hidden" className="cursor-pointer">
           Hidden network
         </Label>
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="wifi-encoded">Encoded URI</Label>
+        <div className="flex gap-2">
+          <Input
+            id="wifi-encoded"
+            type="text"
+            value={wifiURI}
+            readOnly
+            className="font-mono text-sm text-muted-foreground"
+          />
+          <Button
+            type="button"
+            variant="outline"
+            size="icon"
+            onClick={handleCopy}
+            disabled={!wifiURI}
+          >
+            {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+          </Button>
+        </div>
       </div>
     </div>
   );
