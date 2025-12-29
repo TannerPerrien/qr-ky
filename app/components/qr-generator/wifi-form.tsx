@@ -1,5 +1,6 @@
 import { Input } from '~/components/ui/input';
 import { Label } from '~/components/ui/label';
+import { Checkbox } from '~/components/ui/checkbox';
 
 interface WiFiFormProps {
   ssid: string;
@@ -62,12 +63,10 @@ export function WiFiForm({
       )}
 
       <div className="flex items-center space-x-2">
-        <input
+        <Checkbox
           id="wifi-hidden"
-          type="checkbox"
-          className="h-4 w-4 rounded border-input"
           checked={hidden}
-          onChange={(e) => onHiddenChange(e.target.checked)}
+          onCheckedChange={onHiddenChange}
         />
         <Label htmlFor="wifi-hidden" className="cursor-pointer">
           Hidden network

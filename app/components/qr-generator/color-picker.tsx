@@ -1,5 +1,6 @@
 import { Input } from '~/components/ui/input';
 import { Label } from '~/components/ui/label';
+import { Checkbox } from '~/components/ui/checkbox';
 
 interface ColorPickerProps {
   fgColor: string;
@@ -63,12 +64,10 @@ export function ColorPicker({
       </div>
 
       <div className="flex items-center space-x-2">
-        <input
+        <Checkbox
           id="bg-transparent"
-          type="checkbox"
-          className="h-4 w-4 rounded border-input"
           checked={bgTransparent}
-          onChange={(e) => onBgTransparentChange(e.target.checked)}
+          onCheckedChange={onBgTransparentChange}
         />
         <Label htmlFor="bg-transparent" className="cursor-pointer">
           Transparent background
