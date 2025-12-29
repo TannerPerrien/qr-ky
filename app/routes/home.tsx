@@ -12,10 +12,10 @@ import { formatWiFiURI } from '~/lib/wifi-utils';
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "QR-KY - QR Code Generator" },
+    { title: "QR-KY - Free QR Code Generator. No account required." },
     {
       name: "description",
-      content: "Generate QR codes for URLs, WiFi credentials, and custom data. Client-side processing with download as PNG or SVG."
+      content: "Generate QR codes for URLs, WiFi credentials, and custom data. Client-side processing with download as PNG or SVG. Free with no account required!"
     },
   ];
 }
@@ -72,9 +72,9 @@ export default function Home() {
     <main className="container mx-auto p-8 max-w-6xl">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-2">QR-KY</h1>
+        <h1 className="text-4xl font-bold mb-2">QR-KY (quirky)</h1>
         <p className="text-muted-foreground">
-          Generate custom QR codes instantly
+          Generate QR codes. Free. No account required.
         </p>
       </div>
 
