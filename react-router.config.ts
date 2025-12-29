@@ -5,7 +5,9 @@ export default {
   // Server-side render by default, to enable SPA mode set this to `false`
   ssr: false,
   // Pre-render the home route at build time
-  async prerender() {
-    return ["/"];
-  },
+  // NOTE: Temporarily disabled due to hydration error with GitHub Pages base path
+  // The prerendered HTML has basename:"/" but client expects basename:"/qr-ky"
+  // async prerender() {
+  //   return ["/"];
+  // },
 } satisfies Config;
